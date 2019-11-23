@@ -1,0 +1,366 @@
+http://bit.ly/2QGHDCh
+
+What is Kubernetes?
+    Container orch tool.
+
+
+
+What is Docker?
+------------------
+Container - Management - tool
+OPEN SOURCE
+FREE
+RELEASE 
+     - Docker CE - FREE
+     - Docker EE - PAID
+     https://www.docker.com/products/docker-enterprise
+
+What is Container?
+---------------------
+
+20 YEARS -----> RUN APP
+================================
+PHYSICAL MACHINE 
+    CPU + RAM + HDD + OS ---> APP
+----------------------------------
+-- 10 USERS -- 1 APP -- 1 PHYSCIAL 
+-- 1000 USERS --- 1 APP --- 10 PHYSICAL MACHINE.
+=================================================
+            - HIGH AVAILABILILITY
+            - SCALIBILYT
+            - Security
+
+=======================================================
+REDUCE A SOFtWARE RUNNING?
+            WASTAGE IN COMPUTING
+1 PHYSICAL
+        1 CPU   --> 15%---80%%%
+        1 RAM
+        1 HDD
+        1 OSS
+-----------------------
+2000 PHYSICAL --- 80%
+==================================
+            VIRUALIZATION
+
+WASTAGE ---- nOT MORE than 15%
+==========================================
+Demo 
+35.154.121.235
+
+How to install docker in RHEL 7.X
+====================================
+https://www.devopsschool.com/tutorial/docker/install-config/docker-install-commuityedition-centos-rhel.html
+
+Working with Containers?
+-----------------------
+
+
+Working with Docker Images?
+-------------------------
+
+
+
+Sharing Images
+-------------------
+
+
+
+
+
+
+
+
+What is Kubernetes?
+    Container orch tool.
+
+alexmatt
+ChinmoyPadhi
+ksvijayb
+vijaynathani77
+Ahamedukhan
+anilkpo
+anil1205
+vengam
+vjegadeesan
+babafakruddin476
+revanth-wgl
+VasanthBruce
+imsandeepg
+gkshrikant
+reddyko
+mohapma
+
+What is Docker?
+------------------
+Container - Management - tool
+OPEN SOURCE
+FREE
+RELEASE 
+     - Docker CE - FREE
+     - Docker EE - PAID
+     https://www.docker.com/products/docker-enterprise
+Solomon Hykyes
+Go
+https://www.devopsschool.com/blog/list-of-top-container-runtime-interface-projects/
+
+
+What is Container?
+---------------------
+Container is USER SPACE with 
+                    THEIR OWN 
+                                NET
+                                MNT
+                                PMAP
+                                with a help of Docker....
+                                    Docker takes from KERANL NS.
+                            
+ 47  docker run -d jenkins
+   48  docker ps
+   49  ps -eaf | grep docker
+   50  clear
+   51  ps -eaf | grep docker | wc -l
+   52  docker run -d jenkins
+   53  ps -eaf | grep docker | wc -l
+   54  docker run -d jenkins
+   55  ps -eaf | grep docker | wc -l
+   56  docker ps -a
+   57  ps -eaf
+   58  id
+   59  w
+   60  ps -eaf
+   61  ps
+   62  clear
+   63  docker ps -a
+   64  docker stop 7ad90b1975be de729d521fb6
+   65  docker rm 7ad90b1975be de729d521fb6
+   66  docker ps -a
+   67  clear
+   68  docker ps
+   69  docker inspect ebc043157bd6 | grep -i ip
+   70  docker inspect 36d1d06fd5a6 | grep -i ip
+   71  clear
+   72  docker ps
+   73  docker exec ebc043157bd6 df -kh
+   74  docker exec 36d1d06fd5a6 df -kh
+   75  docker ps
+   76  clear
+   77  docker ps
+   78  docker exec ebc043157bd6 ls /var/jenkins_home
+   79  docker exec 36d1d06fd5a6 ls /var/jenkins_home
+   80  docker exec 36d1d06fd5a6 touch /var/jenkins_home/rajesh.txt
+   81  docker exec 36d1d06fd5a6 ls /var/jenkins_home
+   82  docker exec ebc043157bd6 ls /var/jenkins_home
+   83  clear
+   84  docker ps
+   85  docker exec ebc043157bd6 ps -eaf
+   86  docker exec 36d1d06fd5a6 ps -eaf
+   87  history
+
+
+
+20 YEARS -----> RUN APP
+================================
+PHYSICAL MACHINE 
+    CPU + RAM + HDD + OS ---> APP
+----------------------------------
+-- 10 USERS -- 1 APP -- 1 PHYSCIAL 
+-- 1000 USERS --- 1 APP --- 10 PHYSICAL MACHINE.
+=================================================
+            - HIGH AVAILABILILITY
+            - SCALIBILYT
+            - Security
+
+=======================================================
+REDUCE A SOFtWARE RUNNING?
+            WASTAGE IN COMPUTING
+1 PHYSICAL
+        1 CPU   --> 15%---80%%%
+        1 RAM
+        1 HDD
+        1 OSS
+-----------------------
+2000 PHYSICAL --- 80%
+==================================
+            VIRUALIZATION
+
+WASTAGE ---- nOT MORE than 15%
+==========================================
+Demo 
+35.154.121.235
+
+How to install docker in RHEL 7.X
+====================================
+https://www.devopsschool.com/tutorial/docker/install-config/docker-install-commuityedition-centos-rhel.html
+
+Docker----->
+        10+
+
+Docker ARCHITECTURE ----
+Docker Engine
+HUMEN -> DOCKER CLIENT ----REST API----> DOCKER DEAMON --> KERNAL
+
+Working with Containers?
+-----------------------
+create -> start -> stop -> restart -> pause -> unpause -> stop -> delete
+--------------------------------------------------------------------
+------RUN--------
+
+  1  clear
+    2  sudo yum install -y yum-utils device-mapper-persistent-data lvm2
+    3  sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+    4  sudo yum install –y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    5  sudo yum-config-manager --enable rhui-REGION-rhel-server-extras
+    6  sudo yum install -y docker-ce
+    7  clear
+    8  which docker
+    9  ps -eaf | grep docker
+   10  sudo systemctl enable docker
+   11  sudo systemctl start docker
+   12  ps -eaf | grep docker
+   13  which docker
+   14  clear
+   15  docker pull jenkins
+   16  clear
+   17  ls
+   18  docker images
+   19  docker ps
+   20  docker ps -a
+   21  docker craete jenkins
+   22  docker create jenkins
+   23  docker ps -a
+   24  clear
+   25  docker ps -a
+   26  docker start d413adb86899
+   27  docker ps
+   28  history
+
+
+  9  docker ps
+   10  docker run -d jenkins
+   11  docker ps
+   12  clear
+   13  docker ps
+   14  clear
+   15  ls
+   16  clear
+   17  docker ps
+   18  docker stop feaaed873de5 5d7351244872 d413adb86899
+   19  docker ps
+   20  docker ps -a
+   21  docker rm feaaed873de5 5d7351244872 d413adb86899
+   22  clear
+   23  docker ps -a
+   24  docker stop 48e2210614dd
+   25  docker ps -a
+   26  docker restart 48e2210614dd
+   27  docker ps -a
+   28  docker pause 48e2210614dd
+   29  docker ps -a
+   30  docker upause 48e2210614dd
+   31  docker unpause 48e2210614dd
+   32  docker ps -a
+   33  clear
+   34  docker ps -a
+   35  docker stop 48e2210614dd
+   36  docker rm 48e2210614dd
+   37  docker ps
+   38  docker ps -a
+   39  docker run -d jenkins
+   40  docker ps
+   41  clear
+   42  ls
+   43  history
+
+
+What you want to see inside a container????
+========================================
+Container --> APP --> Image --> docker hub --> repository --> Docker images.
+
+How to access a container?
+    ----------------------
+    How to get inside?
+            exec - will execute an executables inside a container...
+                                with -it and bash - you can interact wtih
+
+            HOW TO SAFTLY EXIT A CONTAINER?
+                cONTRL + p  + q
+            attach -- Attached to PID 1
+
+    How to access app inside?
+            ssh
+            http
+
+  90  docker ps
+   91  docker exec ebc043157bd6 ls
+   92  docker exec ebc043157bd6 df -kh
+   93  docker exec ebc043157bd6 fdf
+   94  clear
+   95  docker ps
+   96  docker exec -it ebc043157bd6 /bin/bash
+   97  docker ps
+   98  docker exec ebc043157bd6 ps -eaf
+   99  clear
+  100  ls
+  101  docker ps
+  102  docker attach ebc043157bd6
+  103  docker ps
+  104  clear
+  105  docker ps
+  106  ps -eaf
+  107  clear
+  108  docker ps
+  109  docker inspect 36d1d06fd5a6 | grep -i i
+  110  docker ps
+  111  curl http://172.17.0.4:8080
+  112  history
+
+------
+Container is RUNNNING COZ OF PID 1 is running.
+            PID 1 is running coz of yOU.
+            ----------------------------
+            You CAN RUN ANYTHING
+==============================
+Troubleshooting 
+                Container
+                ------------------
+                RUNNING
+                --------------
+                123  docker logs 36d1d06fd5a6
+                124  docker top 36d1d06fd5a6
+                -------------------------------
+            
+
+                NOT RUNNING
+                Docker Image...
+                --------------------
+                CMD
+                ENTRYPOINT
+
+
+
+
+                Docker Engine
+                ---------------
+
+
+Working with Docker Images?
+-------------------------
+    DOCKER IMAGE IS COMBI OF LAYERS
+    LAYERS IS NOTHING BUT FILESYSTEM
+    IN CASE OF CONFLICT - TOP LAYER ALWAYS WIN
+    ALL LAYERS IS RO
+    EXCEPT TOP LAYERS---RW
+
+
+
+Sharing Images
+-------------------
+
+Kubernetes-Tecnotree-Nov-2019
+
+
+
+
+
+
