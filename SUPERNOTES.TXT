@@ -1,5 +1,8 @@
-http://bit.ly/2QGHDCh
-
+Lab Setup 
+====================
+1 VM - RHEL 7.X --- 2 CPU and 4 GB RAM
+2 VM - RHEL 7.X --- 1 CPU and 2 GB RAM
+=========================================
 What is Kubernetes?
     Container orch tool.
 
