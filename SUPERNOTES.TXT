@@ -455,12 +455,32 @@ kubectl get deploy
 kubectl get nodes
 kubectl get svc
 kubectl get ns
-============================================
+=================================================================
+Make a Kubernetes healty...
+========================
 
 
+How to setup a worker?
+===============================
+    Kubelet
+    docker
+    Kube proxy
+    Kubeadm
 
 
+ 40  clear
+   41  kubectl get pods --all-namespaces
+   42  kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
+   43  kubectl get pods --all-namespaces
+   44  kubectl get nodes
+   45  clear
+   46  sudo -s
+   47  kubectl get nodes
 
+
+WORKER
+=============
+13.232.166.116
 
 
 
