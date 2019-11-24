@@ -1,8 +1,5 @@
-Lab Setup 
-====================
-1 VM - RHEL 7.X --- 2 CPU and 4 GB RAM
-2 VM - RHEL 7.X --- 1 CPU and 2 GB RAM
-=========================================
+http://bit.ly/2QGHDCh
+
 What is Kubernetes?
     Container orch tool.
 
@@ -361,6 +358,113 @@ Sharing Images
 -------------------
 
 Kubernetes-Tecnotree-Nov-2019
+=============================================
+HUMEN
+    YAML
+        POD
+        RC
+        DEPLOY
+        SVC
+
+Master
+    API server - POD -> Container - Image - G Registry
+    Clustor Store -Etcd - POD -> Container - Image - G Registry
+    Controller manager - POD -> Container - Image - G Registry
+    Schedular - POD -> Container - Image - G Registry
+
+ACT LIKE WORKER...
+    Kubelet
+    Docker
+    Kube proxy - POD -> Container - Image - G Registry
+Worker
+    Kubelet
+    docker
+    Kube proxy
+
+
+MASTEr + WORKER - MINIKUBE
+-------------------------------
+https://github.com/kubernetes/minikube
+A VM
+    MASTEr
+    WORKER
+========================================
+Cloud using PAAS
+==================
+AWS - EKS
+Azure - AKS
+GC - GKE
+-----------------
+k8s in Cloud but without PAAS
+-----------------------------
+KOPS
+    vmware
+    vsph
+    aws
+    gc
+https://github.com/kubernetes/kops
+
+Manual Setup of k8s?
+        Soft way
+            Using KUBEADM
+            https://github.com/kubernetes/kubeadm
+        Hard way 
+        https://github.com/kelseyhightower/kubernetes-the-hard-way
+
+==================================================================
+35.154.143.68
+https://www.devopsschool.com/blog/setting-up-kubernetes-clusters-using-kubeadm-manual-way-in-rhel-7-centos7/
+
+======================================
+- Download 5 Images.
+- Crreate 5 POD - Fill container inside a POD.
+- Config each pod to talk to each other.
+- Certificate works.
+- Config....
+----------------------
+
+To start using your cluster, you need to run the following as a regular user:
+
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+You should now deploy a pod network to the cluster.
+Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
+  https://kubernetes.io/docs/concepts/cluster-administration/addons/
+
+Then you can join any number of worker nodes by running the following on each as root:
+
+kubeadm join 172.31.26.152:6443 --token 64gd05.ufomemqd9ic01dpx \
+    --discovery-token-ca-cert-hash sha256:b7ebb37c6ec4a27f6b525c454d14cf6103657b813354b043741879854713f76d
+
+
+How to setup work station? -- DONE
+=================================
+
+MASTER HEALTH
+kubectl cluster-info
+
+VERSION
+kubectl version
+
+PODS...
+kubectl get pods
+kubectl get rc
+kubectl get deploy
+kubectl get nodes
+kubectl get svc
+kubectl get ns
+============================================
+
+
+
+
+
+
+
+
+
 
 
 
