@@ -764,3 +764,231 @@ spec:
   221  clear
   222  kubectl get pod
   223  history
+==========================================================================
+Deployment
+--------------------
+    RC+ == AKA REplicasets
+    rollout
+    rollback
+    versioned
+=========================
+Creating a DEPLOYMENT
+        CMD - 
+        $ kubectl create deployment my-dep --image=nginx
+        YAML - 
+
+Explaining a DEPLOYMENT FIELD.
+Listing a DEPLOYMENT
+Describing a DEPLOYMENT
+Editing a DEPLOYMENT
+Updating a DEPLOYMENT
+----- USING DEPLOYMENT -------
+Replication
+Controller 
+
+Delete a DEPLOYMENT
+    CMD
+    YAML
+
+my-dep-6589b6f7dc-blrnm       1/1     Running   0          19m
+my-dep-6589b6f7dc-dggrk       1/1     Running   0          19m
+my-dep-6589b6f7dc-f9smk       1/1     Running   0          19m
+my-dep-6589b6f7dc-g8k9q       1/1     Running   0          19m
+my-dep-6589b6f7dc-mztc5
+
+DEPLOY nginx
+RS - nginx
+
+Image
+scmgalaxy/nginx-devopsschoolv1
+scmgalaxy/nginx-devopsschoolv2
+
+ 226  kubectl delere rc hello-rc
+  227  clear]
+  228  kubectl delete rc hello-rc
+  229  clear
+  230  kubectl get pods
+  231  clear
+  232  kubectl get pods
+  233  clear
+  234  kubectl creare
+  235  kubectl create
+  236  clear
+  237  kubectl help create
+  238  kubectl help create deployment
+  239  clear
+  240  kubectl get deploy
+  241  kubectl create deployment my-dep --image=nginx
+  242  kubectl get deploy
+  243  clear
+  244  ls
+  245  kubectl get deploy
+  246  kubectl get pods
+  247  kubectl explain deploy
+  248  kubectl explain deploy.spec
+  249  kubectl explain deploy.spec.template
+  250  kubectl explain deploy.spec.template.spec
+  251  kubectl explain deploy.spec.template.spec.containers
+  252  clear
+  253  kubectl get deploy
+  254  kubectl describe deploy my-dep
+  255  CLEAR
+  256  clear
+  257  kubectl edit deploy my-dep
+  258  kubectl get pods
+  259  clear
+  260  kubectl get deploy
+  261  clear
+  262  kubectl
+  263  clear
+  264  kubectl get
+  265  kubectl help get
+  266  kubectl get deploy my-dep -o yaml
+  267  kubectl help get
+  268  kubectl get deploy my-dep -o yaml
+  269  kubectl help get
+  270  kubectl help get | grep export
+  271  kubectl get deploy my-dep -o yaml --export
+  272  clear
+  273  kubectl get deploy my-dep -o yaml --export
+  274  clear
+  275  kubectl get deploy my-dep -o yaml --export >> dep.yaml
+  276  ls
+  277  more dep.yaml
+  278  clear
+  279  vi dep.yaml
+  280  clear
+  281  kubectl create -f dep.yaml
+  282  kubectl get deploy
+  283  clear
+  284  kubectl get pods
+  285  kubectl describe pod my-jenkins-659c78496f-4xh4p
+  286  clear
+  287  kubectl get deploy
+  288  kubectl get pod
+  289  kubectl delete pod my-jenkins-659c78496f-dw6zr
+  290  kubectl get pod
+  291  clear
+  292  kubectl get deploy
+  293  kubectl describe deploy my-je
+  294  kubectl get rs
+  295  clear
+  296  ls
+  297  kubectl craete -f rc.yaml
+  298  vi rc.yaml
+  299  kubectl create -f rc.yaml
+  300  kubectl get pod
+  301  kubectl edit pod hello-rc-2rnc4
+  302  kubectl get pod
+  303  clear
+  304  kubectl get pod
+  305  kubectl describe pod hello-rc-2rnc4
+  306  kubectl get pod -o wide
+  307  curl http://10.44.0.9:8080
+  308  clear
+  309  ls
+  310  clear
+  311  ls
+  312  kubectl get pod
+  313  kubectl edit pod my-dep-6589b6f7dc-mztc5
+  314  kubectl get pod
+  315  clear
+  316  kubectl get pod
+  317  clear
+  318  kubectl get pod
+  319  kubectl get deploy
+  320  kubectl describe pod my-dep
+  321  clear
+  322  kubectl get pod
+  323  kubectl describe pod my-dep-6589b6f7dc-blrnm
+  324  kubectl get pod
+  325  clear
+  326  kubectl describe pod my-dep-6589b6f7dc-blrnm
+  327  kubectl describe my-dep-6589b6f7dc-dggrk
+  328  kubectl describe pod my-dep-6589b6f7dc-dggrk
+  329  kubectl describe pod my-dep-6589b6f7dc-f9smk
+  330  clear
+  331  kubectl get pod
+  332  kubectl describe pod my-dep-6589b6f7dc-g8k9q
+  333  kubectl describe pod my-dep-6589b6f7dc-mztc5
+  334  clear
+  335  kubectl get deploy
+  336  kubectl edit deploy my-dep
+  337  clear
+  338*
+  339  kubectl get rs
+  340  kubectl edit rs my-dep-6589b6f7dc
+  341  clear
+  342  kubectl get delpy
+  343  kubectl get deploy
+  344  kubectl describe deploy my-dep
+  345  clear
+  346  kubectl get pods
+  347  clear
+  348  ls
+  349  history
+  350  clear
+  351  kubectl get pods
+  352  history
+  353  clear
+  354  ls
+  355  kubectl get deploy
+  356  kubectl delete deploy my-dep my-jenkins
+  357  clear
+  358  kubectl get deploy
+  359  kubectl get pods
+  360  kubectl delete rc hello-rc
+  361  clear
+  362  kubectl delete pod hellopod
+  363  kubectl delete pod hello-pod
+  364  clear
+  365  kubectl get pod
+  366  clear
+  367  ls
+  368  vi dep.yaml
+  369  clear
+  370  ls
+  371  kubectl apply -f dep.yaml
+  372  kubectl get pod -o wide
+  373  clear
+  374  kubectl get pod -o wide
+  375  clear
+  376  kubectl get pod -o wide
+  377  clear
+  378  ls
+  379  kubectl get pod -o wide
+  380  curl http://10.44.0.2
+  381  clear
+  382  kubectl
+  383  kubectl rollout
+  384  kubectl rollout history deploy my-jenkins
+  385  cler
+  386  vi dep.yaml
+  387  clear
+  388  kubectl apply -f dep.yaml
+  389  kubectl rollout history deploy my-jenkins
+  390  kubectl get pod -o wide
+  391  clear
+  392  kubectl get pod -o wide
+  393  curl http://10.44.0.1
+  394  curl http://10.44.0.3
+  395  kubectl rollout history deploy my-jenkins
+  396  curl http://10.44.0.1
+  397  kubectl rollout
+  398  kubectl rollout undo
+  399  history
+  400  kubectl help rollout undo
+  401  kubectl rollout undo deploy/my-jenkins --to-revision=1
+  402  kubectl get pod -o wide
+  403  clear
+  404  kubectl get pod -o wide
+  405  clear
+  406  kubectl get pod -o wide
+  407  curl http://10.44.0.1
+  408  curl http://10.44.0.2
+  409  clear
+  410  curl http://10.44.0.2
+  411  history
+
+====QA===========
+Image of Deployment got changed but PODS still remain same.
