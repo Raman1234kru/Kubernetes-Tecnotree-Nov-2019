@@ -678,12 +678,89 @@ spec:
 
 
 
-Creating a POD
+Creating a RC
         CMD - 
-        YAML
-Explaining a POD FIELD.
-Listing a POD
-Describing a POD
-Editing a POD
-Delete a POD
+        YAML - 
 
+Explaining a RC FIELD.
+Listing a RC
+Describing a RC
+Editing a RC
+Updating a RC
+----- USING RC -------
+Replication
+Controller 
+
+Delete a RC
+    CMD
+    YAML
+
+
+rc.yaml
+===========================
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: hello-rc
+spec:
+  replicas: 2   
+  template:
+    metadata:
+      labels:
+        app: hello-world
+    spec:
+      containers:
+      - name: hello-ctr
+        image: nginx
+        ports:
+        - containerPort: 80
+
+  175  kubectl create
+  176  clear
+  177  vi.yaml
+  178  vi rc.yaml
+  179  kubectl craete -f rc.yaml
+  180  kubectl create -f rc.yaml
+  181  clear
+  182  kubectl get pod
+  183  kubectl explain rc
+  184  kubectl explain rc.spec
+  185  kubectl explain rc.spec.template
+  186  kubectl get rc
+  187  clear
+  188  kubectl get rc
+  189  kubectl describe rc hello-rc
+  190  clear
+  191  ls
+  192  kubectl edit rc hello-rc
+  193  kubectl get pod
+  194  clear
+  195  kubectl get pod
+  196  vi rc.yaml
+  197  kubectl apply -f rc.yaml
+  198  kubectl get pod
+  199  clear
+  200  kubectl get pod
+  201  clear
+  202  kubectl get pod
+  203  clear
+  204  kubectl get pod
+  205  clear
+  206  kubectl get pod
+  207  kubectl delete pod hello-rc-65mtc
+  208  kubectl get pod
+  209  clear
+  210  ls
+  211  kubectl
+  212  clear
+  213  kubectl scale
+  214  clear
+  215  kubectl scale --replicas=20 rc/hello-rc
+  216  kubectl get pod
+  217  clear
+  218  kubectl get pod
+  219  clear
+  220  kubectl get pod
+  221  clear
+  222  kubectl get pod
+  223  history
