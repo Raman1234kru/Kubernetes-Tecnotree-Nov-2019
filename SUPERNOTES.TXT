@@ -518,8 +518,137 @@ API-SERVER/GROUP/POD/v1
    61  kubectl config
    62  kubectl config view
    63  history
+==================================================================
+
+Working with NS
+------------------------------
+Creating a NS
+        CMD
+        YAML
+Explaining a NS FIELD.
+Listing a NS
+Describing a NS
+Editing a NS
+Delete a NS
+
+ 67  kubectl create
+   68  clear
+   69  kubectl create ns dev
+   70  kubectl get ns
+   71  kubectl
+   72  kubectl describe ns dev
+   73  clear
+   74  kubectl describe ns dev
+   75  clear
+   76  kubectl edit ns dev
+   77  clear
+   78  kubectl delete ns dev
+   79  kubectl get ns
+   80  clear
+   81  kubectl craete ns qa
+   82  kubectl create ns qa
+   83  clear
+   84  kubectl describe ns qa
+   85  kubectl edit ns qa
+   86  clear
+   87  kubectl
+   88  clear
+   89  kubectl explain ns
+   90  kubectl explain ns.metadata
+   91  clear
+   92  kubectl explain ns.metadata
+   93  kubectl explain ns
+   94  kubectl explain ns.spec
+   95  clear
+   96  history
+
+
+
+Working with POD
+------------------------------
+Creating a POD
+        CMD - 
+        YAML - 
+
+Explaining a POD FIELD.
+Listing a POD
+Describing a POD
+Editing a POD
+Updating a POD
+Delete a POD
+    CMD
+    YAML
+
+pod.yaml
+-------------
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-pod
+  labels: 
+    app: webserver
+spec:
+  containers:
+  - name: hello-ctr
+    image: nginx
+    ports:
+    - containerPort: 80
+
+
+  98  kubectl create
+   99  clear
+  100  kubectl explain pod
+  101  c;ear
+  102  clear
+  103  kubectl explain pod.spec
+  104  kubectl explain pod.spec.containers
+  105  clear
+  106  cf
+  107  ls
+  108  clear
+  109  cd
+  110  ls
+  111  pwd
+  112  vi pod.yaml
+  113  kubectl create
+  114  clear
+  115  kubectl create -f pod.yaml
+  116  kubectl get pod
+  117  kubectl describe pod hello-pod
+  118  clear
+  119  ls
+  120  kubectl edit pod hello-pod
+  121  kubectl describe pod hello-pod
+  122  clear
+  123  ls
+  124* vi
+  125  kubectl create -f pod.yaml
+  126  kubectl apply -f pod.yaml
+  127  kubectl describe pod hello-pod
+  128  clear
+  129  kubectl apply -f pod.yaml
+  130  kubectl apply -f pod.yaml -n=qa
+  131  kubectl get pod
+  132  kubectl get pod --all-namespaces
+  133  clear
+  134  kubectl get pod
+  135* kubectl delete pod h
+  136  kubectl delete pod hello-pod
+  137  kubectl delete -f pod.yaml -n=qa
+  138  history
 
 
 
 
+
+
+
+Creating a POD
+        CMD - 
+        YAML
+Explaining a POD FIELD.
+Listing a POD
+Describing a POD
+Editing a POD
+Delete a POD
 
