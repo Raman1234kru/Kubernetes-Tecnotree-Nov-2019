@@ -485,9 +485,39 @@ WORKER
 How to cleanup
 https://www.devopsschool.com/blog/how-to-delete-remove-clean-existing-corrupted-or-old-kubeadm-kubernetes-clusters-setup/
 
+======================================================
+=======================================================
+How to declare desire in YAML FILE?
+-------------------------------------
+LIST OF RESOURCES?
+        RESOURCE KIND
+        V1
+            METHOD
 
 
+https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.16/
 
+API-SERVER/GROUP/POD/v1    
+                                    GET
+                                    POST
+                                    DELETE       
+                            alpha
+                            ext
+
+
+   51  clear
+   52  kubectl api-resources
+   53  clear
+   54  kubectl
+   55  kubectl   api-versions   Print the supported API versions on the server, in the form of "group/version"
+   56  kubectl api-versions
+   57  clear
+   58  kubectl
+   59  kubectl config
+   60  clear
+   61  kubectl config
+   62  kubectl config view
+   63  history
 
 
 
