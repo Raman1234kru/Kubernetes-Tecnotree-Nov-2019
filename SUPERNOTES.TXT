@@ -575,6 +575,11 @@ Listing a POD
 Describing a POD
 Editing a POD
 Updating a POD
+----- USING POD -------
+- How to get inside a (Container)
+- How to access a POD?
+- How to see logs of Containers.
+
 Delete a POD
     CMD
     YAML
@@ -636,6 +641,36 @@ spec:
   136  kubectl delete pod hello-pod
   137  kubectl delete -f pod.yaml -n=qa
   138  history
+
+143  kubeclt get pod
+  144  kubectl get pod
+  145  kubectl create -f pod.yaml
+  146  kubectl get pod
+  147  clear
+  148  kubectl get pod
+  149  clear
+  150  kubectl get pod -o wide
+  151  kubectl exec
+  152  kubectl help exec
+  153  clear
+  154  kubectl get pod
+  155  kubectl exec -it hello-pod /bin/bash
+  156  kubectl attach hello-pod
+  157  kubectl get pod
+  158  kubectl describe pod hello-pod
+  159  clear
+  160  ls
+  161  kubectl logs hello-pod
+  162  kubectl get pod -o wide
+  163  curl http://10.44.0.1
+  164  kubectl get pod -o wide
+  165  kubectl logs hello-pod
+  166  curl http://10.44.0.1
+  167  kubectl logs hello-pod
+  168  curl http://10.44.0.1
+  169  kubectl logs hello-pod
+  170  kubectl
+  171  history
 
 
 
