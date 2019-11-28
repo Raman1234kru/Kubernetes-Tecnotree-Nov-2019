@@ -990,5 +990,123 @@ scmgalaxy/nginx-devopsschoolv2
   410  curl http://10.44.0.2
   411  history
 
+
+WORKING WITH labels
+===================================
+Apply a label
+See a labels
+Edit a label
+Query a label
+
+
+kubectl label pods foo unhealthy=true
+kubectl label --overwrite pods foo status=unhealthy
+kubectl label pods --all status=unhealthy
+kubectl label pods foo bar-
+reference
+https://www.devopsschool.com/blog/working-with-kubernetes-cluster-using-kubectl-part-7-labels/
+
+
+kubectl label pods my-jenkins-788b58b48-25rh7 name=dbserver
+kubectl label --overwrite pods my-jenkins-788b58b48-25rh7 name=jenkinsserver
+kubectl label pods --all status=unhealthy
+kubectl label pods my-jenkins-788b58b48-25rh7 name-
+kubectl label pods --all app-
+kubectl delete pod -l status=unhealthy
+
+
+==================WORKING WITH SVC================================
+
+kubectl label pods --all app-
+
+Create 
+    CMD
+    yaml
+
+kubectl create service  clusterip svc1 --tcp=8080:80
+kubectl label --overwrite pods hello-pod app=svc2
+kubectl label --overwrite pods hello-pod1 app=svc2
+
+ 500  kubectl create -f pod.yaml
+  501  clear
+  502  kubectl get pod
+  503  kubectl get pod --show-label
+  504  kubectl get pod --show-lable
+  505  kubectl get pod --show-labels
+  506  clear
+  507  kubectl get pod --show-labels
+  508  clear
+  509  kubectl label pods --all app-
+  510  kubectl get pod --show-labels
+  511  clear
+  512  ls
+  513  clear
+  514  ls
+  515  kubectl create
+  516  clear
+  517  kubectl create service
+  518  kubectl create service
+  519  clear
+  520  kubectl create service  clusterip
+  521  kubectl create service  clusterip svc1
+  522  kubectl help create service
+  523  kubectl help create service clusterip
+  524  clear
+  525  kubectl get pod
+  526  kubectl get pod -o wide
+  527  curl http://10.44.0.1
+  528  clear
+  529  ls
+  530  kubectl create service  clusterip svc1 --tcp=8080:80
+  531  kubectl get svc
+  532  kubectl get svc --show-lables
+  533  kubectl get svc --show-labels
+  534  clear
+  535  kubectl get svc --show-labels
+  536  curl http://10.98.191.0
+  537  kubectl describe svc svc1
+  538  kubectl describe pod hello-pod --show-labels
+  539  kubectl describe svc svc1
+  540  kubectl get pod hello-pod --show-labels
+  541  curl http://10.98.191.0
+  542  kubectl label pods hello-pod app=svc1
+  543  kubectl get pod hello-pod --show-labels
+  544  kubectl describe svc svc1
+  545  curl http://10.98.191.0
+  546  curl http://10.98.191.0:8080
+  547  cp pod.yaml pod1.yaml
+  548  vi pod1.yaml
+  549  kubectl create -f pod1.yaml
+  550  kubectl get pod
+  551  kubectl get pod -o wide
+  552  curl http://10.44.0.2
+  553  curl http://10.44.0.1
+  554  clear
+  555  ls
+  556  kubectl get pod -o wide
+  557  kubectl edit pod hello-pod1
+  558  kubectl get pod -o wide --show-labels
+  559  kubectl get svc
+  560  curl http://10.98.191.0
+  561  curl http://10.98.191.0:8080
+  562  clear
+  563  kubectl describe svc svc1
+  564  kubectl edit svc svc1
+  565  cler
+  566  clear
+  567  kubectl describe svc svc1
+  568  clear
+  569  kubectl label pods hello-pod app=svc2
+  570  kubectl label --overwrite pods hello-pod app=svc2
+  571  kubectl label --overwrite pods hello-pod1 app=svc2
+  572  kubectl describe svc svc1
+  573  history
+  574  clear
+  575  kubectget svc
+  576  kubect get svc
+  577  kubectl get svc
+  578  kubect get svc
+  579  history
+
 ====QA===========
-Image of Deployment got changed but PODS still remain same.
+Image of POD(Part of Deployment got changed but PODS still remain same.
