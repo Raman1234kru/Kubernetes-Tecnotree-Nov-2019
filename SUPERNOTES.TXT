@@ -1108,5 +1108,73 @@ kubectl label --overwrite pods hello-pod1 app=svc2
   578  kubect get svc
   579  history
 
+
+kubectl create service  clusterip svc2 --tcp=8080:80 --tcp=8090:80
+kubectl create service nodeport my-ns --tcp=5678:8080
+
+
+
+app=my-ns
+
+kubectl label --overwrite pods hello-pod app=my-ns
+kubectl label --overwrite pods hello-pod1 app=my-ns
+
+52.66.196.197:30922 
+15.206.179.14:30922
+
+427  kubectl create service nodeport my-ns --tcp=5678:8080
+  428  kubectl get svc
+  429  kubectl get svc --show-lables
+  430  kubectl get svc --show-labels
+  431  clear
+  432  kubectl get svc --show-labels
+  433  kubectl edit svc my-ns
+  434  kubectl get svc --show-labels
+  435  kubectl edit svc my-ns
+  436  kubectl get pod
+  437  kubectl delete deploy my-jenkins
+  438  clear
+  439  kubectl get pod
+  440  kubectl get pod --show-labels
+  441  clear
+  442  kubectl label --overwrite pods hello-pod app=my-ns
+  443  kubectl label --overwrite pods hello-pod1 app=my-ns
+  444  clear
+  445  kubectl get pod --show-labels
+  446  kubectl edit svc my-ns
+  447  clear
+  448  ls
+  449  kubectl get svc
+  450  curl http://10.102.172.232:5678
+  451  clear
+  452  ls
+  453  kubectl get svc
+
+
+
+raj-875748690.ap-south-1.elb.amazonaws.com
+
+tectree.k8.rajeshkumar.xyz
+
+kubectl create service loadbalancer my-lbs --tcp=5678:80
+
+  450  curl http://10.102.172.232:5678
+  451  clear
+  452  ls
+  453  kubectl get svc
+  454  history
+  455  clear
+  456  kubectl help create service
+  457  kubectl help create service loadbalancer
+  458  clear
+  459  kubectl create service loadbalancer my-lbs --tcp=5678:80
+  460  kubectl get svc
+  461  kubectl describe svc my-lbs
+  462  history
+  463  kubectl create service
+  464  history
+
+
 ====QA===========
 Image of POD(Part of Deployment got changed but PODS still remain same.
+externalname Create an ExternalName service.
