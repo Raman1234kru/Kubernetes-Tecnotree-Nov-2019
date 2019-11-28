@@ -1239,8 +1239,153 @@ kubectl drain ip-172-31-7-7.ap-south-1.compute.internal --ignore-daemonsets --fo
 5 Liviness
 6. 
 
+============================================
+Docker and Kubernetes Volume
+================================================
+TYPES OF VOLUME in DOCKER
+    - volume
+    - mount
+    - memory
+    https://www.devopsschool.com/blog/understand-docker-volume-from-beginner-to-deep-dive-level/
+
+ 46  clear
+   47  docker ps
+   48  docker run -it --name=rajesh ubuntu /bin/bash
+   49  docker ps -a
+   50  docker attach 5b491ead7202
+   51  cd /var/lib/docker
+   52  clear
+   53  ls
+   54  cd overlay2/
+   55  clear
+   56  ls
+   57  find . -name rajesh.txt
+   58  clear
+   59  docker ps -a
+   60  docker stop 5b491ead7202
+   61  docker rm 5b491ead7202
+   62  clear
+   63  find . -name rajesh.txt
+   64  clear
+   65  cd ..
+   66  ls
+   67  cd volumes
+   68  clear
+   69  ls
+   70  docker volume
+   71  docker volume ls
+   72  clear
+   73  docker volume ls
+   74  docker volume craete rajesh
+   75  ls
+   76  docker volume create rajesh
+   77  clear
+   78  docker volume ls
+   79  ls
+   80  cd rajesh/
+   81  ls
+   82  clear
+   83  cd _data/
+   84  ls
+   85  cd ..
+   86  ls
+   87  docker run -itd -v rajesh:/opt/rajesh ubuntu /bin/bash
+   88  docker attach 1e0e2634c01ddb3490a2266a6dc2dbc4dc000ac16a158d79de2237ce5ce96ac7
+   89  docker stop 1e0e2634c01ddb3490a2266a6dc2dbc4dc000ac16a158d79de2237ce5ce96ac7
+   90  docker rm1e0e2634c01ddb3490a2266a6dc2dbc4dc000ac16a158d79de2237ce5ce96ac7
+   91  docker rm 1e0e2634c01ddb3490a2266a6dc2dbc4dc000ac16a158d79de2237ce5ce96ac7
+   92  clear
+   93  pwd
+   94  ls
+   95  cd _data/
+   96  ls
+   97  clear
+   98  ls
+   99  docker run -itd -v rajesh:/opt/rajesh ubuntu /bin/bash
+  100  docke attach abfd978834f20d9db497c53d9f8a0e469cd41a29de4e36096f28ca0420c4c4a5
+  101  docker attach abfd978834f20d9db497c53d9f8a0e469cd41a29de4e36096f28ca0420c4c4a5
+  102  clear
+  103  docker stop abfd978834f20d9db497c53d9f8a0e469cd41a29de4e36096f28ca0420c4c4a5
+  104  docker rm abfd978834f20d9db497c53d9f8a0e469cd41a29de4e36096f28ca0420c4c4a5
+  105  clear
+  106  ls
+  107  cd ..
+  108  ls
+  109  cd ..
+  110  ls
+  111  pwd
+  112  clear
+  113  cd /opt/
+  114  ls
+  115  mkdir backup
+  116  cd backup/
+  117  pwd
+  118  docker run -it -v /opt/backup:/opt/raju ubuntu
+  119  clear
+  120  ls
+  121  touch file2.txt
+  122  ls
+  123  docker ps
+  124  docker attach 271ffa0638c6
+  125  docker stop 271ffa0638c6
+  126  docker rm  271ffa0638c6
+  127  cd /opt/
+  128  ls
+  129  cd backup/
+  130  ls
+  131  history
+
+
+
+
+5b491ead7202
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ERROR
 Taints:             node.kubernetes.io/unreachable:NoSchedule
 
 https://stackoverflow.com/questions/56614136/how-to-remove-kube-taints-from-worker-nodes-taints-node-kubernetes-io-unreachab
+https://stackoverflow.com/questions/56861796/what-happens-when-you-drain-nodes-in-a-kubernetes-cluster
+https://medium.com/@felipedutratine/when-you-try-to-drain-a-kubernetes-node-but-it-blocks-5aba9592d7c9
+
+Kubernetes Access Service located in another namespace
+
+Kubernetes Access Service located in another namespace or Map service to 
+
+Services of type ExternalName map a Service to a DNS name, not to a typical selector such as my-service or cassandra. You specify these Services with the spec.externalName parameter.
+
+This Service definition, for example, maps the my-service Service in the prod namespace to my.database.example.com:
+
+
+
+ExternalName
+Services with type ExternalName work as other regular services, but when you want to access to that service name, instead of returning cluster-ip of this service, it returns CNAME record with value that mentioned in externalName:
+
+ExternalName service references to an external DNS address instead of only pods, which will allow
+application authors to reference services that exist off platform, on other clusters, or locally.
+
+kubectl create service externalname my-ns --external-name bar.com
