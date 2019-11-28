@@ -1174,7 +1174,73 @@ kubectl create service loadbalancer my-lbs --tcp=5678:80
   463  kubectl create service
   464  history
 
+--------------------------------
+POD PROBES
+=========================
+Readiness
+https://www.devopsschool.com/blog/how-to-check-containers-readiness-inside-a-pod-using-readinessprobe/
 
+Liveness
+https://www.devopsschool.com/blog/how-to-check-containers-health-inside-a-kubernetes-pod-using-livenessprobe/
+
+
+Making Node accepting Pods ---- TAINT
+https://www.devopsschool.com/blog/working-with-kubernetes-cluster-using-kubectl-part-1/
+
+
+kubectl taint node ip-172-31-26-152.ap-south-1.compute.internal node-role.kubernetes.io/master:NoSchedule-
+
+\
+kubectl delete deploy my-jenkins --grace-period=0 --force --namespace default
+
+kubectl delete pod * --grace-period=0
+
+for p in $(kubectl get pods | grep Terminating | awk '{print $1}'); do kubectl delete pod $p --grace-period=0 --force;done
+
+
+---------------------------------
+
+Taints
+kubectl taint node ip-172-31-7-7.ap-south-1.compute.internal node.kubernetes.io/unreachable:NoSchedule-
+kubectl taint node ip-172-31-7-7.ap-south-1.compute.internal nnode.kubernetes.io/unreachable:NoExecute-
+
+kubectl uncordon ip-172-31-7-7.ap-south-1.compute.internal
+
+kubectl patch node ip-172-31-7-7.ap-south-1.compute.internal -p '{"spec":{"Taints":[]}}'
+
+https://stackoverflow.com/questions/35453792/pods-stuck-in-terminating-status
 ====QA===========
 Image of POD(Part of Deployment got changed but PODS still remain same.
 externalname Create an ExternalName service.
+headless service.
+
+
+kubectl drain ip-172-31-7-7.ap-south-1.compute.internal --force
+
+kubectl drain ip-172-31-7-7.ap-south-1.compute.internal --ignore-daemonsets --force --delete-local-data
+
+  625  kubectl drain ip-172-31-7-7.ap-south-1.compute.internal --force
+  626  kubectl get pod -o wide
+  627  kubectl get nodes
+  628  kubectl get pod -o wide
+  629  clear
+  630  ls
+  631  kubectl get pod -o wide
+  632  clear
+  633  kubectl drain ip-172-31-7-7.ap-south-1.compute.internal --ignore-daemonsets --force --delete-local-data
+
+
+================LAB============================
+1. How this work? 
+  kubernetes service.
+2. Taints
+3. drain
+4. readiness
+5 Liviness
+6. 
+
+
+ERROR
+Taints:             node.kubernetes.io/unreachable:NoSchedule
+
+https://stackoverflow.com/questions/56614136/how-to-remove-kube-taints-from-worker-nodes-taints-node-kubernetes-io-unreachab
