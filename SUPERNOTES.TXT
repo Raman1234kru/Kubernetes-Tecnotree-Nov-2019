@@ -1388,12 +1388,69 @@ spec:
       type: DirectoryOrCreate
 
 =====================nfs==============================
+
+
+UBUNTU - 
+https://www.devopsschool.com/tutorial/kubernetes/labs/lab-9-kubernetes-configMaps-secrets.html
+
+
 Setup a NFS server in rhel 7.X
 ======================
 https://www.thegeekdiary.com/centos-rhel-7-configuring-an-nfs-server-and-nfs-client/
 
-UBUNTU - 
-https://www.devopsschool.com/tutorial/kubernetes/labs/lab-9-kubernetes-configMaps-secrets.html
+ 159  yum update
+  160  rpm -qa | grep nfs-utils
+  161  yum install nfs-utils rpcbind
+  162  systemctl enable nfs-server
+  163  systemctl enable rpcbind
+  164  systemctl enable nfs-lock
+  165  systemctl enable nfs-idmap
+  166  systemctl start rpcbind
+  167  systemctl start nfs-server
+  168  systemctl start nfs-lock
+  169  systemctl start nfs-idmap
+  170  systemctl status nfs
+  171  mkdir /tecnotree
+  chmod 1777 /tecnotree
+  172  vi /etc/exports
+        ------------------
+        /tecnotree *(rw)
+
+  173  exportfs -r
+  174  systemctl restart nfs-server
+  showmount -e 
+  175  history
+
+-----------client setup-----------
+rpm -qa | grep nfs-utils
+yum install nfs-utils
+mkdir /tmp/mylocal
+sudo mount -t nfs -o ro,nosuid 172.31.26.152:/tecnotree /tmp/mylocal
+mkdir /tmp/mylocal1
+sudo mount -t nfs -o rw,nosuid 172.31.26.152:/tecnotree /tmp/mylocal1
+vi /etc/fstab
+172.31.26.152:/tecnotree 	/tmp/mylocal	 nfs 	ro,nosuid 	0 	0
+172.31.26.152:/tecnotree 	/tmp/mylocal1	 nfs 	rw,nosuid 	0 	0
+
+
+
+kind: Pod
+apiVersion: v1
+metadata:
+  name: nfs-in-a-pod
+spec:
+  containers:
+    - name: app
+      image: scmgalaxy/nginx-devopsschoolv1
+      volumeMounts:
+        - name: nfs-volume
+          mountPath: /tmp/mylocal1 # Please change the destination you like the share to be mounted too
+  volumes:
+    - name: nfs-volume
+      nfs:
+        server: 172.31.26.152 # Please change this to your NFS server
+        path: /tecnotree # Please change this to the relevant share
+
 
 
 
