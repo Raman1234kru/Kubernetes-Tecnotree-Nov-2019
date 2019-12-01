@@ -1575,6 +1575,93 @@ spec:
  1056  vi pvc.yaml
  1057  kubectl apply -f pvc.yaml
  1058  kubectl apply -f pvc.yaml clear
+=======================================
+configMaps
+====================================
+----------
+server {
+    listen       80;
+    server_name  localhost;
+
+    location / {
+        proxy_bind 127.0.0.1;
+        proxy_pass http://127.0.0.1:3000;
+    }
+
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+}
+---------------------
+kubectl create configmap my-config --from-file=reverseproxy.conf
+kubectl get cm
+kubectl describe cm my-config
+
+----------------------
+apiVersion: v1
+kind: Pod
+metadata:
+  name: helloworld-nginx
+  labels:
+    app: helloworld-nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.11
+    ports:
+    - containerPort: 80
+    volumeMounts:
+    - name: config-volume
+      mountPath: /etc/nginx/conf.d
+  - name: k8s-demo
+    image: wardviaene/k8s-demo
+    ports:
+    - containerPort: 3000
+  volumes:
+    - name: config-volume
+      configMap:
+        name: my-config
+        items:
+        - key: reverseproxy.conf
+          path: myconfo.conf
+
+-------------------------
+kubectl exec -it helloworld-nginx /bin/bash
+cd /etc/nginx/conf.d
+
+==========================================
+secrets
+-----------
+https://www.devopsschool.com/tutorial/kubernetes/kubernetes-resource-objects/secrets-example-programs.html
+
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysecret
+type: Opaque
+data:
+  username: YWRtaW4=
+  password: MWYyZDFlMmU2N2Rm
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mypod
+spec:
+  containers:
+  - name: mypod
+    image: scmgalaxy/nginx-devopsschoolv1
+    volumeMounts:
+    - name: foo
+      mountPath: "/etc/foo"
+      readOnly: true
+  volumes:
+  - name: foo
+    secret:
+      secretName: mysecret
+
 
 
 ========================
@@ -1646,3 +1733,60 @@ What about if containers inside a pod is not responding.
 Is there any way if Hostpath is used, next pod must be created in same host.
 ====
 IF PV can be auto scale or increase dynamically?
+
+=====================================================
+Can i resize a PV?
+- YES
+
+Can i resize a PVC?
+- NO, only dynamically provisioned pvc can be resized and the storageclass that provisions the pvc must support resize.
+
+error: persistentvolumeclaims "pvchostpath" could not be patched: persistentvolumeclaims "pvchostpath" is forbidden: only dynamically provisioned pvc can be resized and the storageclass that provisions the pvc must support resize
+You can run `kubectl replace -f /tmp/kubectl-edit-2566r.yaml` to try this update again.
+
+How to resize pvc?
+if your Workload's Persistent Volume is almost full. How can you expand it? With Kubernetes 1.11 and above, this can now easily be done by just updating the Persistent Volume Claim storage specification.
+
+Only dynamically provisioned pvc can be resized and the storageclass that provisions the pvc must support resize.
+
+Reference
+https://dev.to/bzon/resizing-persistent-volumes-in-kubernetes-like-magic-4f96
+
+
+
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv0001 
+spec:
+  capacity:
+    storage: 5Gi 
+  accessModes:
+  - ReadWriteOnce 
+  nfs: 
+    path: /tmp 
+    server: 172.17.0.2 
+  persistentVolumeReclaimPolicy: Recycle 
+
+Save the definition to a file, for example nfs-pv.yaml, and create the PV:
+$ kubectl create -f nfs-pv.yaml
+persistentvolume "pv0001" created
+
+$ get pv
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-claim1
+spec:
+  accessModes:
+    - ReadWriteOnce 
+  resources:
+    requests:
+      storage: 1Gi 
+
+# kubectl create -f nfs-claim.yaml
+
+
+Kubernetes PersistentVolume and PersistentVolumeClaim
