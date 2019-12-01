@@ -1452,8 +1452,129 @@ spec:
         path: /tecnotree # Please change this to the relevant share
 
 
+PV and PVC
+-------------------
+https://www.devopsschool.com/blog/persistentvolume-persistentvolumeclaim-volumes-using-hostpath/
+
+What happens if already used PVC is being used in another pOD?
+---
+
+What happens when you use PVC with same spec again with new PV?
+[ec2-user@ip-172-31-26-152 ~]$ kubectl get pvc
+NAME           STATUS    VOLUME     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
+pvchostpath    Bound     hostpath   1Gi        RWO            manual         8m6s
+pvchostpath1   Pending                                        manual         6s
+[ec2-user@ip-172-31-26-152 ~]$ kubectl get pv
+NAME       CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                 STORAGECLASS   REASON   AGE
+hostpath   1Gi        RWO            Retain           Bound    default/pvchostpath   manual                  9m59s
 
 
+kind: Pod
+apiVersion: v1
+metadata:
+  name: task-pv-pod1
+spec:
+  containers:
+    - name: task-pv-container
+      image: scmgalaxy/nginx-devopsschoolv1
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: task-pv-storage
+  volumes:
+    - name: task-pv-storage
+      persistentVolumeClaim:
+        claimName: pvchostpath
+
+ 972  kubectl create -f pv.yaml
+  973  kubectl get pv
+  974  clear
+  975  ls
+  976  kubectl get pvc
+  977  vi pvc.yaml
+  978  kubectl create -f pvc.yaml
+  979  vi pvc.yaml
+  980  kubectl create -f pvc.yaml
+  981  clear
+  982  kubectl get pvc
+  983  kubectl get pv
+  984  cd /tmp/devopsschool/
+  985  ls
+  986  vi pvcpod.yaml
+  987  kubectl create -f pvcpod.yaml
+  988  kubectl get pod
+  989  kubectl get pv
+  990  kubectl get pvc
+  991  kubectl exec -it task-pv-pod /bin/bash
+  992  kubectl get pod -o wide
+  993  curl http://10.32.0.4
+  994  pwd
+  995  ls
+  996  clear
+  997  cd
+  998  ls
+  999  vi pvcpod2.yaml
+ 1000  kubectl create -f pvcpod2.yaml
+ 1001  kubectl get pod
+ 1002  kubectl get pod -o
+ 1003  clear
+ 1004  kubectl get pod -o wide
+ 1005  curl http://10.32.0.4
+ 1006  curl http://10.32.0.5
+ 1007  clear
+ 1008  ls
+ 1009  cp pvc.yaml pvc1.yaml
+ 1010  vi pvc1.yaml
+ 1011  kubectl create -f pvc1.yaml
+ 1012  kubectl get pvc
+ 1013  kubectl get pv
+ 1014  clear
+ 1015  ls
+ 1016  cp pv.yaml pv1.yaml
+ 1017  cp pv.yaml pv2.yaml
+ 1018  vi pv1.yaml
+ 1019  vi pv1.yaml
+ 1020  vi pv1.yaml
+ 1021  kubectl create -f pv1.yaml
+ 1022  kubectl get pv
+ 1023  clear
+ 1024  kubectl get pv
+ 1025  kubectl get pvc
+ 1026  kubectl get pv
+ 1027  clear
+ 1028  kubectl get pv
+ 1029  kubectl get pvc
+ 1030  ls
+ 1031  cp pvc1.yaml pvc2.yaml
+ 1032  vi pvc2.yaml
+ 1033  kubectl describe pvc pvchostpath1
+ 1034  clear
+ 1035  ls
+ 1036  kubectl describe pvc
+ 1037  clear
+ 1038  kubectl get pv
+ 1039  kubectl get pvc
+ 1040  ls
+ 1041  kubectl create -f pvc2.yaml
+ 1042  kubectl get pvc
+ 1043  kubectl get pv
+ 1044  kubectl get pvc
+ 1045  kubectl get pv
+ 1046  kubectl get pvc
+ 1047  ls
+ 1048  vi pv.yaml
+ 1049  kubectl get pv
+ 1050  vi pv.yaml
+ 1051  kubectl apply -f pv
+ 1052  kubectl apply -f pv.yaml
+ 1053  kubectl get pv
+ 1054  kubectl get pvc
+ 1055  ls
+ 1056  vi pvc.yaml
+ 1057  kubectl apply -f pvc.yaml
+ 1058  kubectl apply -f pvc.yaml clear
 
 
 ========================
