@@ -1335,10 +1335,81 @@ TYPES OF VOLUME in DOCKER
   130  ls
   131  history
 
+============================================
+1. LMS
+2. What would be the next topic
+
+Day 4-
+========================
+Storage
+Networking
+Day 5-
+
+EMPTYDIR
+==========================================
+https://www.devopsschool.com/blog/kubernetes-volume-emptydir-explained-with-examples/
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pd
+spec:
+  containers:
+  - image: scmgalaxy/nginx-devopsschoolv1
+    name: test-container
+    volumeMounts:
+    - mountPath: /cache
+      name: cache-volume
+  volumes:
+  - name: cache-volume
+    emptyDir: {}
+
+==============hostpath==================
+https://www.devopsschool.com/blog/kubernetes-volume-hostpath-explained-with-examples/
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pd
+spec:
+  containers:
+  - image: scmgalaxy/nginx-devopsschoolv1
+    name: test-container
+    volumeMounts:
+    - mountPath: /test-pd
+      name: test-volume
+  volumes:
+  - name: test-volume
+    hostPath:
+      # directory location on host
+      path: /data
+      # this field is optional
+      type: DirectoryOrCreate
+
+=====================nfs==============================
+Setup a NFS server in rhel 7.X
+======================
+https://www.thegeekdiary.com/centos-rhel-7-configuring-an-nfs-server-and-nfs-client/
+
+UBUNTU - 
+https://www.devopsschool.com/tutorial/kubernetes/labs/lab-9-kubernetes-configMaps-secrets.html
 
 
 
-5b491ead7202
+
+
+========================
+Anotations
+Statefulsets
+Helm3
+RBAC
+Ingess
+ETCD and HA
+Day 5
+
+
+
 
 
 
@@ -1389,3 +1460,11 @@ ExternalName service references to an external DNS address instead of only pods,
 application authors to reference services that exist off platform, on other clusters, or locally.
 
 kubectl create service externalname my-ns --external-name bar.com
+
+
+====
+What about if containers inside a pod is not responding. 
+=====
+Is there any way if Hostpath is used, next pod must be created in same host.
+====
+IF PV can be auto scale or increase dynamically?
