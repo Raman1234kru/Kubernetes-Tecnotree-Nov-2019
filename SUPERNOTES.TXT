@@ -2027,6 +2027,25 @@ Ingess
 Anotations
 ETCD and HA
 
+==============================================================================
+Compute - 
+Storage - 
+Networking - 
+Security - 
+
+Monitoring
+    POD Monitoring
+    infra Monitoring using cadvisor-heapster
+    http://devopsschool.com/tutorial/kubernetes/kubernetes-pod-container-monitoring-with-cadvisor-heapster.html
+
+    Infra Monitoring
+    http://devopsschool.com/tutorial/kubernetes/kubernetes-monitoring-with-prometheus-grafana.html
+
+Logging
+    ELK
+    http://devopsschool.com/tutorial/kubernetes/kubernetes-monitoring-with-prometheus-grafana.html
+    http://devopsschool.com/tutorial/kubernetes/kubernetes-logging-with-elasticsearch-fluentd-kibana.html
+
 
 
 
