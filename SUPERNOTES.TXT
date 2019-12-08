@@ -2048,6 +2048,42 @@ Logging
 
 
 
+Image pull secret
+Certificate Manager 
+Registry
+Scanner
+helm repo
+encryption
+monitoring - 7-8
+istio service mesh
+discovery
+amsbassder
+
+
+
+How to reach out to me?
+http://rajeshkumar.xyz/
+
+
+How to find Kubernetes 
+        Slides?
+        https://www.devopsschool.com/slides
+        PDF
+        https://www.devopsschool.com/pdf
+        Tutorials 
+        https://www.devopsschool.com/tutorial/kubernetes/
+        Notes - github
+        Video
+        https://www.youtube.com/channel/UCrXr49kBvXJeQMMl2693c4g
+        Blogs
+        http://devopsschool.com/blog
+        QUIZ
+        https://www.devopsschool.com/lms
+        LABS
+        https://www.devopsschool.com/tutorial/kubernetes/labs/
+        Example programs
+            https://github.com/devops-school/
+            https://github.com/orgs/devopsschool-sample-projects/     
 
 
 
@@ -2091,7 +2127,7 @@ Services of type ExternalName map a Service to a DNS name, not to a typical sele
 
 This Service definition, for example, maps the my-service Service in the prod namespace to my.database.example.com:
 
-
+---------Security Policy to send  out in forms of Blog.---------
 
 ExternalName
 Services with type ExternalName work as other regular services, but when you want to access to that service name, instead of returning cluster-ip of this service, it returns CNAME record with value that mentioned in externalName:
