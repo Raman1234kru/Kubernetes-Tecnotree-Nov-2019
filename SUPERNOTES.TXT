@@ -1772,7 +1772,7 @@ kubectl get clusterrolebinding | grep tec
 kind: ClusterRoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: tecnotree-cr-binding2
+  name: tecnotree-cr-binding3
 subjects:
 - kind: ServiceAccount
   name: tecnotree-admin
@@ -1866,6 +1866,108 @@ roleRef:
 ============================
 $ kubectl --context=employee-context run nginx --image=nginx
 $ kubectl --context=employee-context get pods
+
+
+Statefulsets...
+============================
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv0001 
+spec:
+  capacity:
+    storage: 1Gi 
+  accessModes:
+  - ReadWriteOnce 
+  nfs: 
+    path: /tecnotree
+    server: 172.31.14.69 
+  persistentVolumeReclaimPolicy: Recycle
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv0002
+spec:
+  capacity:
+    storage: 1Gi 
+  accessModes:
+  - ReadWriteOnce 
+  nfs: 
+    path: /tecnotree
+    server: 172.31.14.69 
+  persistentVolumeReclaimPolicy: Recycle
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-claim1
+spec:
+  accessModes:
+    - ReadWriteOnce 
+  resources:
+    requests:
+      storage: 1Gi 
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-claim2
+spec:
+  accessModes:
+    - ReadWriteOnce 
+  resources:
+    requests:
+      storage: 1Gi 
+
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: test-pd3
+spec:
+  containers:
+  - image: scmgalaxy/nginx-devopsschoolv1
+    name: test-container
+    volumeMounts:
+    - mountPath: /test-pd
+      name: test-volume
+  volumes:
+  - name: test-volume
+    nfs:
+      server: 172.31.14.69
+      path: /tecnotree
+
+
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: web
+spec:
+  selector:
+    matchLabels:
+      app: nginx # has to match .spec.template.metadata.labels
+  serviceName: "nginx"
+  replicas: 3 # by default is 1
+  template:
+    metadata:
+      labels:
+        app: nginx # has to match .spec.selector.matchLabels
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: nginx
+        image: scmgalaxy/nginx-devopsschoolv1
+        ports:
+        - containerPort: 80
+          name: web
+        volumeMounts:
+        - name: my-volume
+          mountPath: /usr/share/nginx/html
+      volumes:
+      - name: my-volume
+        persistentVolumeClaim:
+          claimName: nfs-claim1
 
 
 ========================
